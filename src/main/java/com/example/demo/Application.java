@@ -15,6 +15,8 @@ import java.util.List;
 
 
 public class Application extends javafx.application.Application {
+    private Symptom symptom = new Symptom();
+    private static final ArrayList<Disease> diseases = new ArrayList<>();
     public CheckBox febre;
     public CheckBox dor_cabeca;
     public CheckBox falta_ar;
@@ -33,27 +35,28 @@ public class Application extends javafx.application.Application {
 
     @FXML
     protected void onCheckSymptom() {
-        if(febre.selectedProperty().getValue() == true){
-            System.out.println("febre");
-        }else if(dor_cabeca.selectedProperty().getValue() == true){
-            System.out.println("dor cabeca");
-        }else if (falta_ar.selectedProperty().getValue() == true){
-            System.out.println("falta_ar");
-        }else if (congestao.selectedProperty().getValue() == true){
-
-        }else if (tosse.selectedProperty().getValue() == true){
-
-        }else if (espirro.selectedProperty().getValue() == true){
-
-        }else if (confusao.selectedProperty().getValue() == true){
-
-        }else if (perca_olfato.selectedProperty().getValue() == true){
-
+        if(febre.selectedProperty().getValue() && !symptom.getAllSymptoms().contains("febre")){
+            this.symptom.add("febre");
+        }else if(dor_cabeca.selectedProperty().getValue() && !symptom.getAllSymptoms().contains("dor_cabeca")){
+            this.symptom.add("dor_cabeca");
+        }else if (falta_ar.selectedProperty().getValue() && !symptom.getAllSymptoms().contains("falta_ar")){
+            this.symptom.add("falta_ar");
+        }else if (congestao.selectedProperty().getValue() && !symptom.getAllSymptoms().contains("congestao")){
+            this.symptom.add("congestao");
+        }else if (tosse.selectedProperty().getValue() && !symptom.getAllSymptoms().contains("tosse")){
+            this.symptom.add("tosse");
+        }else if (espirro.selectedProperty().getValue() && !symptom.getAllSymptoms().contains("espirro")){
+            this.symptom.add("espirro");
+        }else if (confusao.selectedProperty().getValue() && !symptom.getAllSymptoms().contains("confusao")){
+            this.symptom.add("confusao");
+        }else if (perca_olfato.selectedProperty().getValue() && !symptom.getAllSymptoms().contains("perca_olfato")) {
+            this.symptom.add("perca_olfato");
         }
     }
+
     @FXML
     protected void onHelloButtonClick() {
-        System.out.println("teste");
+        System.out.println(this.symptom.getAllSymptoms());
     }
 
     @Override
@@ -66,12 +69,14 @@ public class Application extends javafx.application.Application {
     }
 
     public static void main(String[] args) {
-        Pathologies covid = new Pathologies(1, "covid", List.of(new String[]{"dor de cabeça", "febre"}));
-        Pathologies gripeComum = new Pathologies(1, "gripe comum", List.of(new String[]{"coriza", "mal estar"}));
+        Disease covid = new Disease(1, "covid", List.of(new String[]{"dor_cabeca", "febre"}));
+        diseases.add(covid);
+
+        Disease gripeComum = new Disease(1, "gripe comum", List.of(new String[]{"coriza", "mal estar"}));
+        diseases.add(gripeComum);
 
 
-        System.out.println(covid.getSymptoms());
-        System.out.println(gripeComum.getSymptoms());
+        System.out.println(diseases.get(0).getSymptoms());
 
         launch();
     }
