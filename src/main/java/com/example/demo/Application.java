@@ -10,6 +10,7 @@ import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -22,19 +23,37 @@ public class Application extends javafx.application.Application {
     public CheckBox espirro;
     public CheckBox confusao;
     public CheckBox perca_olfato;
-    @FXML
+
     public Button buttonDiagnosis;
+
     @FXML
     private Label welcomeText;
     @FXML
     private TextArea textArea;
+
     @FXML
+    protected void onCheckSymptom() {
+        if(febre.selectedProperty().getValue() == true){
+            System.out.println("febre");
+        }else if(dor_cabeca.selectedProperty().getValue() == true){
+            System.out.println("dor cabeca");
+        }else if (falta_ar.selectedProperty().getValue() == true){
+            System.out.println("falta_ar");
+        }else if (congestao.selectedProperty().getValue() == true){
 
+        }else if (tosse.selectedProperty().getValue() == true){
 
+        }else if (espirro.selectedProperty().getValue() == true){
+
+        }else if (confusao.selectedProperty().getValue() == true){
+
+        }else if (perca_olfato.selectedProperty().getValue() == true){
+
+        }
+    }
+    @FXML
     protected void onHelloButtonClick() {
-        String customText = textArea.getText();
-
-        welcomeText.setText(customText);
+        System.out.println("teste");
     }
 
     @Override

@@ -15,14 +15,14 @@
     </padding>
 
     <Label fx:id="welcomeText"/>
-    <CheckBox fx:id="febre" onAction="#onCheckSymptoms">Febre</CheckBox>
-    <CheckBox fx:id="falta_ar" onAction="#onCheckSymptoms">Falta de ar</CheckBox>
-    <CheckBox fx:id="dor_cabeca" onAction="#onCheckSymptoms">Dor de cabeça</CheckBox>
-    <CheckBox fx:id="congestao" onAction="#onCheckSymptoms">Congestão nasal</CheckBox>
-    <CheckBox fx:id="tosse" onAction="#onCheckSymptoms">Tosse</CheckBox>
-    <CheckBox fx:id="espirro" onAction="#onCheckSymptoms">Espirro</CheckBox>
-    <CheckBox fx:id="confusao" onAction="#onCheckSymptoms">Confusão mental</CheckBox>
-    <CheckBox fx:id="perca_olfato" onAction="#onCheckSymptoms">Perca de olfato/paladar</CheckBox>
+    <CheckBox fx:id="febre" onAction="#onCheckSymptom">Febre</CheckBox>
+    <CheckBox fx:id="falta_ar" onAction="#onCheckSymptom">Falta de ar</CheckBox>
+    <CheckBox fx:id="dor_cabeca" onAction="#onCheckSymptom">Dor de cabeça</CheckBox>
+    <CheckBox fx:id="congestao" onAction="#onCheckSymptom">Congestão nasal</CheckBox>
+    <CheckBox fx:id="tosse" onAction="#onCheckSymptom">Tosse</CheckBox>
+    <CheckBox fx:id="espirro" onAction="#onCheckSymptom">Espirro</CheckBox>
+    <CheckBox fx:id="confusao" onAction="#onCheckSymptom">Confusão mental</CheckBox>
+    <CheckBox fx:id="perca_olfato" onAction="#onCheckSymptom">Perca de olfato/paladar</CheckBox>
 
     <TextArea fx:id="textArea"/>
     <Button fx:id="buttonDiagnosis" text="Hello!" onAction="#onHelloButtonClick"/>

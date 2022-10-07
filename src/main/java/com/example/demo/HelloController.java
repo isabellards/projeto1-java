@@ -23,9 +23,6 @@ public class HelloController {
     @FXML
     private TextArea textArea;
 
-    public HelloController(){
-        this.buttonDiagnosis.setOnAction(this.eventHandler());
-    }
     @FXML
     protected void onHelloButtonClick() {
         String customText = textArea.getText();
@@ -38,13 +35,5 @@ public class HelloController {
 
         }
     }
-    private EventHandler<ActionEvent> eventHandler(){
-        EventHandler<ActionEvent> buttonHandler = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                System.out.println("chegou a qui");
-            }
-        };
-        return buttonHandler;
-    }
+
 }
