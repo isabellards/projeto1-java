@@ -3,7 +3,7 @@ package com.example.demo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pathologies {
+public class Disease {
     private int id;
     private String name;
     private List<String> symptoms = new ArrayList<>();
@@ -32,7 +32,7 @@ public class Pathologies {
         this.symptoms = symptoms;
     }
 
-    public Pathologies(int id, String name, List<String> symptoms){
+    public Disease(int id, String name, List<String> symptoms){
         this.id = id;
         this.name = name;
         this.symptoms.addAll(symptoms);
