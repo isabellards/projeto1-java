@@ -17,6 +17,7 @@ import java.util.List;
 public class Application extends javafx.application.Application {
     private Symptom symptom = new Symptom();
     private static final ArrayList<Disease> diseases = new ArrayList<>();
+    private ArrayList<String> probableDiseases = new ArrayList<>();
     public CheckBox febre;
     public CheckBox dor_cabeca;
     public CheckBox falta_ar;
@@ -29,14 +30,14 @@ public class Application extends javafx.application.Application {
     public Button buttonDiagnosis;
 
     @FXML
-    private Label welcomeText;
-    @FXML
-    private TextArea textArea;
+    public Label showResult;
 
     @FXML
     protected void onCheckSymptom() {
         if(febre.selectedProperty().getValue() && !symptom.getAllSymptoms().contains("febre")){
             this.symptom.add("febre");
+        }else if(!febre.selectedProperty().getValue() && symptom.getAllSymptoms().contains("febre")){
+            this.symptom.getAllSymptoms().remove("febre");
         }else if(dor_cabeca.selectedProperty().getValue() && !symptom.getAllSymptoms().contains("dor_cabeca")){
             this.symptom.add("dor_cabeca");
         }else if (falta_ar.selectedProperty().getValue() && !symptom.getAllSymptoms().contains("falta_ar")){
@@ -55,15 +56,36 @@ public class Application extends javafx.application.Application {
     }
 
     @FXML
-    protected void onHelloButtonClick() {
-        System.out.println(this.symptom.getAllSymptoms());
+    protected void onDiagnosisButtonClick() {
+        this.probableDiseases.clear();
+        for(Disease disease: this.diseases){
+            int matchDisease = 0;
+            for (String symptom: disease.getSymptoms()) {
+                if(this.symptom.getAllSymptoms().contains(symptom)){
+                    matchDisease++;
+                }
+            }
+            if(matchDisease > 1){
+                this.probableDiseases.add(disease.getName());
+            }
+        }
+        String result;
+        if(!this.probableDiseases.isEmpty()){
+            result = "São possíveis sintomas de:";
+            for (String disease: this.probableDiseases) {
+                result += "\n" + disease;
+            }
+        }else{
+            result = "Nenhum resultado encontrado.";
+        }
+        showResult.setText(result);
     }
 
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 800, 600);
-        stage.setTitle("Hello!");
+        Scene scene = new Scene(fxmlLoader.load(), 300, 400);
+        stage.setTitle("App Diagnóstico");
         stage.setScene(scene);
         stage.show();
     }
@@ -72,11 +94,8 @@ public class Application extends javafx.application.Application {
         Disease covid = new Disease(1, "covid", List.of(new String[]{"dor_cabeca", "febre"}));
         diseases.add(covid);
 
-        Disease gripeComum = new Disease(1, "gripe comum", List.of(new String[]{"coriza", "mal estar"}));
+        Disease gripeComum = new Disease(1, "gripe comum", List.of(new String[]{"tosse", "espirro"}));
         diseases.add(gripeComum);
-
-
-        System.out.println(diseases.get(0).getSymptoms());
 
         launch();
     }
