@@ -6,6 +6,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.layout.GridPane?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.demo.HelloController">
     <padding>
@@ -13,6 +15,16 @@
     </padding>
 
     <Label fx:id="welcomeText"/>
+    <CheckBox fx:id="febre" onAction="#onCheckSymptoms">Febre</CheckBox>
+    <CheckBox fx:id="falta_ar" onAction="#onCheckSymptoms">Falta de ar</CheckBox>
+    <CheckBox fx:id="dor_cabeca" onAction="#onCheckSymptoms">Dor de cabeça</CheckBox>
+    <CheckBox fx:id="congestao" onAction="#onCheckSymptoms">Congestão nasal</CheckBox>
+    <CheckBox fx:id="tosse" onAction="#onCheckSymptoms">Tosse</CheckBox>
+    <CheckBox fx:id="espirro" onAction="#onCheckSymptoms">Espirro</CheckBox>
+    <CheckBox fx:id="confusao" onAction="#onCheckSymptoms">Confusão mental</CheckBox>
+    <CheckBox fx:id="perca_olfato" onAction="#onCheckSymptoms">Perca de olfato/paladar</CheckBox>
+
     <TextArea fx:id="textArea"/>
     <Button text="Hello!" onAction="#onHelloButtonClick"/>
 </VBox>
+
